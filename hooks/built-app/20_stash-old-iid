@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+set -eo pipefail; [[ -n "$PLUSHU_TRACE" ]] && set -x
+
+app_dir="$PLUSHU_APPS_DIR/$1"
+
+# remove any lingering old iid
+[[ -e "$app_dir/build.old.iid" ]] &&
+  docker rmi "$(<"$app_dir/build.old.iid")" > /dev/null &&
+  rm -f "$app_dir/build.old.iid"
+
+[[ -e "$app_dir/build.iid" ]] &&
+  mv -f "$app_dir/build.iid" "$app_dir/build.old.iid"
