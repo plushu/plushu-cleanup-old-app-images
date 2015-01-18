@@ -9,6 +9,7 @@ if [[ -e "$app_dir/build.old.iid" ]]; then
   rm -f "$app_dir/build.old.iid"
 fi
 
+# stash the current iid
 if [[ -e "$app_dir/build.iid" ]]; then
   mv -f "$app_dir/build.iid" "$app_dir/build.old.iid"
 fi
