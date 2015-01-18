@@ -3,12 +3,12 @@ set -eo pipefail; [[ -n "$PLUSHU_TRACE" ]] && set -x
 
 app_dir="$PLUSHU_APPS_DIR/$1"
 
-if [[ -e "$app_dir/build.old.iid" ]]; then
-  docker rmi "$(<"$app_dir/build.old.iid")" > /dev/null &&
-  rm -f "$app_dir/build.old.iid"
-fi
-
 if [[ -e "$app_dir/release.old.iid" ]]; then
   docker rmi "$(<"$app_dir/release.old.iid")" > /dev/null &&
   rm -f "$app_dir/release.old.iid"
+fi
+
+if [[ -e "$app_dir/build.old.iid" ]]; then
+  docker rmi "$(<"$app_dir/build.old.iid")" > /dev/null &&
+  rm -f "$app_dir/build.old.iid"
 fi
