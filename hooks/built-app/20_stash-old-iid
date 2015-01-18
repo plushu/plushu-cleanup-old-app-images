@@ -5,7 +5,7 @@ app_dir="$PLUSHU_APPS_DIR/$1"
 
 # remove any lingering old iid
 if [[ -e "$app_dir/build.old.iid" ]]; then
-  docker rmi "$(<"$app_dir/build.old.iid")" > /dev/null &&
+  docker rmi "$(<"$app_dir/build.old.iid")" > /dev/null 2>&1 || :
   rm -f "$app_dir/build.old.iid"
 fi
 
